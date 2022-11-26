@@ -15,6 +15,7 @@ from lm_eval.prompts import (
     conala_prompt,
     spider_prompt,
     concode_prompt,
+    codexglue_tt_prompt,
 )
 
 
@@ -57,6 +58,7 @@ class TokenizedDataset(IterableDataset):
         prompt_type_mbpp="incoder",
         prompt_type_code_to_text="left",
         language="python",
+        translation_task="zh_en",
         prefix="",
         setup="finetuning",
     ):
@@ -73,6 +75,7 @@ class TokenizedDataset(IterableDataset):
         self.prompt_type_mbpp = prompt_type_mbpp
         self.prompt_type_code_to_text = prompt_type_code_to_text
         self.language = language
+        self.translation_task = translation_task
         self.prefix = prefix
         self.setup = setup
 
@@ -116,6 +119,13 @@ class TokenizedDataset(IterableDataset):
                     language=self.language,
                     prompt_type=self.prompt_type_code_to_text,
                     prefix=self.prefix,
+                )
+            
+            elif self.mode == "codexglue-tt":
+                prompt = codexglue_tt_prompt(
+                    self.dataset[task],
+                    trans_task=self.translation_task,
+                    prefix=""
                 )
 
             prompts.append(prompt)

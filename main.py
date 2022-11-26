@@ -9,7 +9,7 @@ from transformers import AutoModelForCausalLM, AutoTokenizer, HfArgumentParser
 from lm_eval.arguments import EvalArguments
 from lm_eval.evaluator import Evaluator
 
-ALL_TASKS = ["humaneval", "apps", "mbpp", "code-to-text", "conala", "spider", "concode"]
+ALL_TASKS = ["humaneval", "apps", "mbpp", "code-to-text", "conala", "spider", "concode","codexglue-tt"]
 
 
 class MultiChoice:
@@ -48,6 +48,12 @@ def parse_args():
         type=str,
         default="python",
         help=f"Language for the code to text task",
+    )
+    parser.add_argument(
+        "--translation_task",
+        type=str,
+        default="zh_en",
+        help=f"Translation task for Codexglue text to text task. Possible values - dn_en,lv_en,no_en,zh_en"
     )
     parser.add_argument(
         "--setup_apps",
