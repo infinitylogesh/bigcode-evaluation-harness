@@ -113,7 +113,7 @@ def parallel_generations(
             gen_kwargs["stopping_criteria"] = StoppingCriteriaList(
                 [EndOfFunctionCriteria(0, EOF_STRINGS, tokenizer)]
             )
-        elif mode in ["conala", "spider", "concode"]:
+        elif mode in ["conala", "spider", "concode","codexglue-tt"]:
             gen_kwargs["stopping_criteria"] = StoppingCriteriaList(
                 [EndOfFunctionCriteria(0, ["\n"], tokenizer)]
             )

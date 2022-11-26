@@ -185,7 +185,7 @@ class Evaluator:
                 self.model,
                 self.tokenizer,
                 dataset,
-                mode="codexglue_tt",
+                mode=task,
                 args=self.args,
                 num_tasks=self.args.num_tasks_codexglue_tt,
             )
@@ -209,6 +209,7 @@ class Evaluator:
             "conala",
             "spider",
             "concode",
+            "codexglue-tt"
         ]:
             print(_WARNING)
             raise ValueError(

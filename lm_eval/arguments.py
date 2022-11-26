@@ -57,6 +57,12 @@ class EvalArguments:
             "help": "The number of Concode text-to-code tasks to run. If not specified all tasks are evaluated."
         },
     )
+    num_tasks_codexglue_tt: Optional[int] = field(
+        default=None,
+        metadata={
+            "help": "The number of CodeXGlue text-to-text tasks to run. If not specified all tasks are evaluated."
+        },
+    )
     code_to_text_data_size: Optional[int] = field(
         default=1200,
         metadata={

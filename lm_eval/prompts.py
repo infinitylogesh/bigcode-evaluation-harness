@@ -232,11 +232,12 @@ def codexglue_tt_prompt(sample,trans_task="zh_en",prefix=""):
         examples = json.load(file)
     text = sample["source"]
     text = prefix + text
+    examples = examples[language]
     entry = f"Translate the following documentation from {language.title()} to English:\n"
     src1 = f"\n{language.title()}:\n" + examples["source1"]
     tgt1 = "\nEnglish:\n" + examples["target1"]
     src2 = f"\n{language.title()}:\n" + examples["source2"]
     tgt2 = "\nEnglish:\n" + examples["target2"]
     examples = entry + src1 + tgt1 + src2 + tgt2
-    prompt = examples + f"\n{language.title()}:\n" + text + "\nEnglish:\n"
+    prompt = examples + f"\n{language.title()}:\n" + text + "English:\n"
     return prefix + prompt

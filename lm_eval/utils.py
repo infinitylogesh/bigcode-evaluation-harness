@@ -127,7 +127,7 @@ class TokenizedDataset(IterableDataset):
                     trans_task=self.translation_task,
                     prefix=""
                 )
-
+    
             prompts.append(prompt)
 
         outputs = self.tokenizer(
@@ -269,5 +269,10 @@ def complete_code(
                 output = gen_code.split("Solution:\n", 3)[-1]
                 output = output.split("\n")[0]
                 code_gens[task].append(output)
+            elif mode == "codexglue-tt":
+                output = gen_code.split("\nEnglish:\n", 3)[-1]
+                output = output.split("\n")[0]
+                code_gens[task].append(output)
+
 
     return code_gens
