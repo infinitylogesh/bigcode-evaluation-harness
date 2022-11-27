@@ -139,7 +139,7 @@ def parallel_generations(
         prompt_type_mbpp=args.prompt_type_mbpp,
         prompt_type_code_to_text=args.prompt_type_code_to_text,
         language=args.language,
-        translation_task=args.translation_task,
+        translation_task=args.translation_task_codexglue_tt,
         setup=args.setup_apps,
         prefix=args.prefix,
     )

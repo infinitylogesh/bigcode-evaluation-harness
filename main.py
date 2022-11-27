@@ -50,12 +50,6 @@ def parse_args():
         help=f"Language for the code to text task",
     )
     parser.add_argument(
-        "--translation_task",
-        type=str,
-        default="zh_en",
-        help=f"Translation task for Codexglue text to text task. Possible values - dn_en,lv_en,no_en,zh_en"
-    )
-    parser.add_argument(
         "--setup_apps",
         type=str,
         default="finetuning",
@@ -166,7 +160,6 @@ def main():
             else:
                 raise ValueError("No eos_token or bos_token found")
         tokenizer.pad_token = tokenizer.eos_token
-
         evaluator = Evaluator(accelerator, model, tokenizer, args)
         for task in task_names:
             if args.generation_only:

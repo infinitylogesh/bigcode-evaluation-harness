@@ -177,7 +177,7 @@ class Evaluator:
         elif task == "codexglue-tt":
 
             dataset = load_dataset(
-                    "code_x_glue_tt_text_to_text",self.args.translation_task,split="test"
+                    "code_x_glue_tt_text_to_text",self.args.translation_task_codexglue_tt,split="test"
             )
             
             generations = parallel_generations(
