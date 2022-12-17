@@ -54,7 +54,7 @@ class CodexglueTextToText(Task):
 
     def get_dataset(self):
         """Returns dataset for the task or an iterable of any object, that get_prompt can handle"""
-        return self.get_dataset["test"]
+        return self.dataset["test"]
 
     def fewshot_examples(self):
         """Loads and returns the few-shot examples for the task if they exist."""
@@ -83,7 +83,7 @@ class CodexglueTextToText(Task):
         entry = f"Translate the following documentation from {language.title()} to English:\n"
         examples = self.fewshot_examples()
         examples = examples[language]
-        prompt = self.two_shot_prompt(entry, text, examples)
+        prompt = self.two_shot_prompt(entry, text, examples, language)
         return prompt
 
     def get_reference(self, doc):
